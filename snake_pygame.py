@@ -1,5 +1,6 @@
-import sys
 import random
+import sys
+
 import pygame
 
 # ---------- Konfigurasi dasar ----------
@@ -8,7 +9,9 @@ BLOCK_SIZE = 20
 FPS = 12  # kecepatan game (semakin besar semakin cepat)
 
 # Pastikan grid pas
-assert WIDTH % BLOCK_SIZE == 0 and HEIGHT % BLOCK_SIZE == 0, "WIDTH/HEIGHT harus kelipatan BLOCK_SIZE"
+assert WIDTH % BLOCK_SIZE == 0 and HEIGHT % BLOCK_SIZE == 0, (
+    "WIDTH/HEIGHT harus kelipatan BLOCK_SIZE"
+)
 
 # Warna
 BLACK = (0, 0, 0)
@@ -68,7 +71,9 @@ def draw_snake(surface, snake):
     pygame.draw.rect(surface, DARK_GREEN, (head[0], head[1], BLOCK_SIZE, BLOCK_SIZE))
     # Tubuh
     for segment in snake[1:]:
-        pygame.draw.rect(surface, GREEN, (segment[0], segment[1], BLOCK_SIZE, BLOCK_SIZE))
+        pygame.draw.rect(
+            surface, GREEN, (segment[0], segment[1], BLOCK_SIZE, BLOCK_SIZE)
+        )
 
 
 def draw_food(surface, food_pos):
@@ -189,10 +194,14 @@ def main():
             screen.blit(overlay, (0, 0))
 
             msg = big_font.render("Game Over", True, WHITE)
-            sub = font.render("Tekan R atau SPACE untuk restart • ESC/Q untuk keluar", True, WHITE)
+            sub = font.render(
+                "Tekan R atau SPACE untuk restart • ESC/Q untuk keluar", True, WHITE
+            )
             score_msg = font.render(f"Skor akhir: {score}", True, WHITE)
             screen.blit(msg, (WIDTH // 2 - msg.get_width() // 2, HEIGHT // 2 - 70))
-            screen.blit(score_msg, (WIDTH // 2 - score_msg.get_width() // 2, HEIGHT // 2 - 20))
+            screen.blit(
+                score_msg, (WIDTH // 2 - score_msg.get_width() // 2, HEIGHT // 2 - 20)
+            )
             screen.blit(sub, (WIDTH // 2 - sub.get_width() // 2, HEIGHT // 2 + 20))
 
         pygame.display.flip()
